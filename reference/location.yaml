@@ -1,0 +1,245 @@
+﻿class: |
+	location
+classdesc: |
+	標準ブラウザ互換の window.location オブジェクトです。
+	
+	リクエストに関する情報は request オブジェクトからも取得できますが JavaScript に慣れていればこちらのオブジェクトの方が親しみがあるでしょう。ブラウザ互換性を気にした実装をする場合にも便利です。
+methods:
+	- 
+	  name	: |
+	    location.href
+	  syntax: |
+	   string location.href
+	  desc	: |
+	    ブラウザの動作をエミュレートするプロパティです。
+	    現在表示されようとしている URL を示します。
+	    
+	    <span class="hilight">http://www.qrone.org:8080/path/to/contents.html?key=value</span>#hash
+	  param:
+	    get:|
+	      リクエスト URL を返します
+	    set:|
+	      値を書き換えます
+	  history:
+	    -
+	      version: |
+	        0.0.5
+	      description: |
+	        location.href を実装しました
+	  example: 
+	    -
+	      ex: |
+	        リクエスト URL を表示します
+	      code: |
+	        document.write(location.href);
+	      output: |
+	        http://www.qrone.org/path/to/contents.html?key=value
+	- 
+	  name	: |
+	    location.protocol
+	  syntax: |
+	    string location.protocol
+	  desc	: |
+	    ブラウザの動作をエミュレートするプロパティです。
+	    現在表示されようとしている URL のプロトコルスキーマです
+	    
+	    <span class="hilight">http</span>://www.qrone.org:8080/path/to/contents.html?key=value#hash
+	  param:
+	    get:|
+	      プロトコルスキーマを返します
+	    set:|
+	      値を書き換えます
+	  history:
+	    -
+	      version: |
+	        0.0.5
+	      description: |
+	        location.protocol を実装しました
+	  example: 
+	    -
+	      ex: |
+	        プロトコルスキーマを表示します
+	      code: |
+	        document.write(location.protocol);
+	      output: |
+	        http
+	- 
+	  name	: |
+	    location.host
+	  syntax: |
+	    string location.host
+	  desc	: |
+	    ブラウザの動作をエミュレートするプロパティです。
+	    現在表示されようとしている URL のホストです
+	    
+	    http://<span class="hilight">www.qrone.org:8080</span>/path/to/contents.html?key=value#hash
+	  param:
+	    get:|
+	      ホストを返します
+	    set:|
+	      値を書き換えます
+	  history:
+	    -
+	      version: |
+	        0.0.5
+	      description: |
+	        location.host を実装しました
+	  example: 
+	    -
+	      ex: |
+	        ホストを表示します
+	      code: |
+	        document.write(location.host);
+	      output: |
+	        www.qrone.org:8080
+	- 
+	  name	: |
+	    location.hostname
+	  syntax: |
+	    string location.hostname
+	  desc	: |
+	    ブラウザの動作をエミュレートするプロパティです。
+	    現在表示されようとしている URL のホスト名です
+	    
+	    http://<span class="hilight">www.qrone.org</span>:8080/path/to/contents.html?key=value#hash
+	  param:
+	    get:|
+	      ホスト名を返します
+	    set:|
+	      値を書き換えます
+	  history:
+	    -
+	      version: |
+	        0.0.5
+	      description: |
+	        location.hostname を実装しました
+	  example: 
+	    -
+	      ex: |
+	        ホスト名を表示します
+	      code: |
+	        document.write(location.hostname);
+	      output: |
+	        www.qrone.org
+	- 
+	  name	: |
+	    location.port
+	  syntax: |
+	    number location.port
+	  desc	: |
+	    ブラウザの動作をエミュレートするプロパティです。
+	    現在表示されようとしている URL のポート番号です
+	    
+	    http://www.qrone.org:<span class="hilight">8080</span>/path/to/contents.html?key=value#hash
+	  param:
+	    get:|
+	      ポート番号を返します
+	    set:|
+	      値を書き換えます
+	  history:
+	    -
+	      version: |
+	        0.0.5
+	      description: |
+	        location.port を実装しました
+	  example:
+	    -
+	      ex: |
+	        ポート番号を表示します
+	      code: |
+	        document.write(location.port);
+	      output: |
+	        8080
+	- 
+	  name	: |
+	    location.pathname
+	  syntax: |
+	    string location.pathname
+	  desc	: |
+	    ブラウザの動作をエミュレートするプロパティです。
+	    現在表示されようとしている URL のリクエストパスです
+	    
+	    http://www.qrone.org:8080<span class="hilight">/path/to/contents.html</span>?key=value#hash
+	  param:
+	    get:|
+	      リクエストパスを返します
+	    set:|
+	      値を書き換えます
+	  history:
+	    -
+	      version: |
+	        0.0.5
+	      description: |
+	        location.pathname を実装しました
+	  example:
+	    - 
+	      ex: |
+	        ポート番号を表示します
+	      code: |
+	        document.write(location.pathname);
+	      output: |
+	        /path/to/contents.html
+	- 
+	  name	: |
+	    location.pathname
+	  syntax: |
+	    string location.search
+	  desc	: |
+	    ブラウザの動作をエミュレートするプロパティです。
+	    現在表示されようとしている URL のクエリ文字列です
+	    
+	    http://www.qrone.org:8080/path/to/contents.html<span class="hilight">?key=value</span>#hash
+	    
+	    この値を key=value で分解した配列が query オブジェクトとして用意されている為、通常はそちらを利用可能です。このプロパティはブラウザとの互換性のためのみに利用するとよいでしょう。
+	  seealso:
+	    - window.query
+	  param:
+	    get:|
+	      クエリ文字列を返します
+	    set:|
+	      値を書き換えます
+	  history:
+	    -
+	      version: |
+	        0.0.5
+	      description: |
+	        location.search を実装しました
+	  example:
+	    -
+	      ex: |
+	        ポート番号を表示します
+	      code: |
+	        document.writeln(location.search);
+	        document.write(query);
+	      output: |
+	        ?key=value
+	        {"key":"value"}
+	- 
+	  name	: |
+	    location.hash
+	  syntax: |
+	    string location.hash
+	  desc	: |
+	    ブラウザの動作をエミュレートするプロパティです。
+	    ハッシュ値はサーバー側で取得できないため、プロパティのみが互換性の為のプレースホルダとして存在します。
+	    
+	    http://www.qrone.org:8080/path/to/contents.html?key=value#hash
+	  param:
+	    get:|
+	      空文字を返します
+	    set:|
+	      値を書き換えます
+	  history:
+	    -
+	      version: |
+	        0.0.5
+	      description: |
+	        location.hash を実装しました
+	  example: 
+	    - 
+	      ex: |
+	        ポート番号を表示します
+	      code: |
+	        document.write(location.hash);
+	      output: |
+	        &nbsp;

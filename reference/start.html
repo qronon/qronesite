@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>QrONE JavaScript</title>
+<meta name="include-in" content="../main/qrone-frame.html#content"/>
+<link href="../main/default.css" include /> 
+</head>
+<body>
+
+<div class="rightcolumn">
+
+</div>
+
+
+<h2>インストール</h2>
+
+<h3>1. "qrone-x.y.z.jar" をダウンロードしよう！</h3>
+
+まず。最新の qrone.zip を<a href="http://www.qrone.org/archive/qrone-x.y.z.zip">ダウンロード</a>しましょう。<br>
+また、<a href="http://java.com/">Java 6</a> がインストールされていない場合、インストールしてください.<br/>
+<br/>
+また、開発版を入手したいなどの場合には、<a href="http://github.com/qronon/qrone">github のリポジトリ</a>を参照してもよいでしょう。<br/>
+<br/>
+
+
+<h3>2. 動かしてみよう！</h3>
+
+QrONE は、１ファイルで起動出来るウェブサーバーです。<br>
+<br>
+インストールも qrone.zip を解凍するだけでよく、解凍したフォルダにある qrone-x.y.z.jar だけで起動できます。残りのファイルはサンプルのソースコードや、ライセンスファイルなどです。<br/>
+<br/>
+Windows なら "qrone-x.y.z.jar" をダブルクリックして起動します。<br/>
+<br/>
+一切の設定はありませんので、まず起動してみましょう。起動すると下のようなウインドウが表示されます。これで 9601 ポートでウェブサーバーが起動できました。また、終了したいときはウインドウを閉じるだけです。<br/>
+<br/>
+<img src="../site/qroneserver-snap.png" /><br/>
+<br/>
+もちろん、コマンドラインからも起動可能で、プロダクションで利用するための数多くのオプションが用意されています。<br>
+<br>
+また、qrone.jar は、Servlet として配置することも可能な為、既存の環境を壊すことなく、Tomcat、Jetty (QrONE はデフォルトで Jetty を利用しています) などの Java サーバーや Google AppEngine で動作させることも可能です。<br>
+<br/>
+<h3>3. スクリプトを実行してみよう！</h3>
+
+QrONE は、デフォルトで jar ファイルのあるフォルダを、ドキュメントルートとして参照するようになっています。<br/>
+<br/>
+メモ帳などを利用して "hello.js" という名前のファイルを qrone.jar のあるフォルダに下の内容で作ってみましょう。<br/>
+<br/>
+<div class="codebox">
+document.write(<span style="color:yellow">"Hello JavaScript World!"</span>);
+</div>
+<br/>
+また、qrone.jar はこのファイル１つだけで動作しますので、好きな場所に移動して簡単に利用できます。いつもウェブサイト開発をしているフォルダがあれば、そこに qrone.jar を移動して起動してみましょう。<br/>
+
+<h3>4. 表示してみよう！</h3>
+
+以上で完了です。 <br>
+<a href="http://localhost:9601/test.js">http://localhost:9601/test.js</a> にアクセスすると Hello JavaScript World! と表示されましたね。<br/>
+<br/>
+<img src="../site/hellojs-snap.png" /><br/>
+<br/>
+
+<h3>NEXT Step</h3>
+
+<img src="../img/led-icons/arrow_right.png" align="absmiddle"/>
+<a href="qrone-0.0.5.zip" class="point">チュートリアルを見て、QrONE をもっと使ってみよう！</a><br/>
+<br/>
+<img src="../img/led-icons/arrow_right.png" align="absmiddle"/>
+<a href="qrone-0.0.5.zip" class="point">API リファレンスを見て、何ができるのかを知ろう！</a><br/>
+
+
+
+</body></html>

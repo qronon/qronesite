@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="include-in" content="../main/qrone-frame.html#content"/>
+<style>
+body{
+	font-family:Arial;
+}
+.codebox{
+	font-family:'Courier New';
+	font-size:10pt;
+	color:white;
+	
+	scale9:url(qrblackback.png) 15px 50px 15px 25px;
+	width:500px;
+	background-color:#312525;
+	padding:15px;
+}
+
+h3{
+	font-family:'Courier New';
+}
+i{
+	
+	color:gray;
+	font-size:smaller;
+	font-style:normal;
+}
+
+</style>
+</head>
+<body>
+
+<h2>global functions</h2>
+
+<h3><i>void</i> require(<i>String</i> path)</h3>
+<h3><i>void</i> require_once(<i>String</i> path)</h3>
+<h3><i>String</i> stringify(<i>Object</i> out)</h3>
+<h3><i>String</i> load_file(<i>String</i> path)</h3>
+<h3><i>Object</i> load_properties(<i>String</i> path)</h3>
+<h3><i>Object</i> load_yaml(<i>String</i> path)</h3>
+<h3><i>byte[]</i> base64_decode(<i>String</i> base64String)</h3>
+<h3><i>String</i> base64_encode(<i>byte[]</i> binaryData)</h3>
+<h3><i>String</i> unescape(<i>String</i> str)</h3>
+<h3><i>String</i> escape(<i>String</i> str)</h3>
+<h3><i>String</i> md2(<i>String</i> data)</h3>
+<h3><i>String</i> md5(<i>String</i> data)</h3>
+<h3><i>String</i> sha1(<i>String</i> data)</h3>
+<h3><i>String</i> sha256(<i>String</i> data)</h3>
+<h3><i>String</i> sha384(<i>String</i> data)</h3>
+<h3><i>String</i> sha512(<i>String</i> data)</h3>
+<h3><i>String</i> digest(<i>String</i> type, <i>String</i> data)</h3>
+
+String fetch(String url)
+
+<h2>global object</h2>
+
+<h3><i>java.io.PrintStream</i> in</h3>
+<h3><i>java.io.PrintStream</i> out</h3>
+<h3><i>Object</i> cookie</h3>
+<h3><i>Object</i> query</h3>
+
+<h2>global object (standalone only)</h2>
+
+MemcachedService memcached_connect(String host, Number port)
+KVSService mongo_connect(String host, Number port, String schema)
+KVSService mongo_connect(String host, Number port, String schema, String user, String password)
+Connection jdbc_connect(String cls, String url)
+Connection jdbc_connect(String cls, String url, Properties info)
+Connection derby_connect(String file, String user, String password)
+Connection mysql_connect(String host, String schema, String user, String password)
+
+
+'scale9' property is a very powerful custom property proposed by QrONE minifier.<br/>
+You need just 1 image to create well-desinged box like rounded-coner drop-shadowed box with floating icon to top-right corner very easily.<br>
+<br>
+This applies scalable background image to a box like <a href="http://www.adobe.com/livedocs/flex/201/html/wwhelp/wwhimpl/common/html/wwhelp.htm?context=LiveDocs_Book_Parts&file=embed_082_9.html">Adobe Flex's scale-9</a> formatting.<br>
+
+<h3>syntax</h3>
+
+Use in <b>style attribute only,</b> specified in style tags or stylesheet will be ignored.<br>
+<br>
+<div style="scale9:url(qrblackback.png) 15px 50px 15px 25px;
+	width:500px;background-color:#312525;" class="codebox">
+scale9:url(file) leftX rightX topY bottomY;<br>
+<br>
+scale9:url(box.png) 10px 20px 30px 40px;<br>
+<span style="color:lightgreen">// scale-9 formatting in HTML. </span><br>
+<br>
+scale9:url(box.png) 10px 20px;<br>
+<span style="color:lightgreen">// scale-9 with horizontal scaling only.</span><br>
+
+</div>
+
+<h3>sample</h3>
+
+You need only 1 image and 1 css rule to create this code box.<br/>
+<br>
+
+<div class="codebox">
+&lt;div style="<span style="color:yellow">scale9:url(box.png) 15px 50px 15px 25px;</span>"&gt;<br/>
+contents inside.<br/>
+&lt;/div&gt;<br/>
+
+</div>
+
+<div style="width:500px;margin:6px;">
+<img src="qrblackback.png" align="absmiddle"/> box.png
+</div>
+
+Of course, no browser is supporting 'scale9' property, but browser show source html no ploblem <b>without scale9 property.</b><br>
+<br>
+
+<div class="codebox">
+&lt;div style="<span style="color:yellow">scale9:url(box.png) 15px 50px 15px 25px;</span>"&gt;<br/>
+contents inside. (not minified)<br/>
+&lt;/div&gt;<br/>
+
+</div>
+
+
+
+
+</body></html>

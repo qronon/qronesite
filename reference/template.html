@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>QrONE JavaScript</title>
+<meta name="include-in" content="../main/qrone-frame.html#content"/>
+<link href="../main/default.css" include />
+</head>
+<script type="text/javascript" src="../lib/jquery-1.4.2.min.js"></script>
+<script type="text/javaScript" src="../lib/chili/jquery.chili-2.2.js"></script>
+<script type="text/javaScript" src="../lib/chili/recipes.js"></script>
+<script>
+
+
+</script>
+<body>
+<div class="rightcolumn"></div>
+
+QrONE は、ハイパフォーマンスウェブサイトを実現する為の、きわめて洗練されたテンプレートエンジンを持っています。
+
+QrONE は、一切の特殊なマークアップを必要としません。普通の HTML に対し CSS セレクタによる操作を行います。
+
+<textarea tag="code" id="jq" class="html">
+<html>
+body
+</html>
+</textarea>
+
+ハイパフォーマンスウェブサイトの鍵は、HTML/JavaScript/CSS の圧縮と分離された配置、そして画像の結合と CSS Sprite での参照です。今までのテンプレートエンジンはこれらの作業をすべて手作業で行う必要がありました。
+
+今までのテンプレートエンジンの大きな問題は、確かに自由度は高いのですが、プログラマが HTML 中にプログラムを埋め込む必要がある為、出力される HTML がどのようなものになるかを事前に知ることができませんでした。この為、オンザフライで最適化しようとするとサーバーで重い処理が必要となってしまうのです。
+
+
+
+
+
+
+
+
+
+include の実装です。HTML は、内部に CSS と JavaScript を持っていてこれらは
+
+
+このテンプレートエンジンは、HTML にプログラムを埋め込んだようなものとは違い
+
+
+
+
+
+
+テンプレートは、W3C 準拠の Mozilla FireFox で利用された HTML5 Parser 及び、CSS3 Parser、そして Mozilla Rhino の JavaScript エンジンで完全に分析され
+
+をまたデザイナーから納入された HTML がタグの不一致などで不完全なものであってもそのままの形で読み込み、整形して出力できます。
+
+
+
+
+ 
+ HTML5 及び ECMAScript に準拠した形で
+
+通常、ウェブサイトを作るとき、ページはいくつかの
+
+
+</body></html>

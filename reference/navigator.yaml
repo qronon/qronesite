@@ -1,0 +1,34 @@
+﻿class: |
+	navigator
+classdesc: |
+	標準ブラウザ互換の navigator オブジェクトです。
+	
+	現状、userAgent のみが取得できます。
+	
+methods:
+	- 
+	  name	: |
+	    navigator.userAgent
+	  syntax: |
+	   string navigator.userAgent
+	  desc	: |
+	    UserAgent ヘッダを返します。
+	  param:
+	    get:|
+	      UserAgent ヘッダを返します。
+	    set:|
+	      値を設定します。
+	  history:
+	    -
+	      version: |
+	        0.0.5
+	      description: |
+	        navigator.userAgent を実装しました
+	  example: 
+	    -
+	      ex: |
+	        UserAgent を表示します
+	      code: |
+	        document.write(navigator.userAgent);
+	      output: |
+	        Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) ...
