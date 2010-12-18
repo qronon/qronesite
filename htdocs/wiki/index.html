@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>QrONE JavaScript</title>
+<script language="Javascript" type="text/javascript" src="../lib/edit_area/edit_area_full.js"></script>
+<script>
+// initialisation
+		editAreaLoader.init({
+			id: "example_1"	// id of the textarea to transform		
+			,start_highlight: true	// if start with highlight
+			,allow_resize: "both"
+			,allow_toggle: true
+			,word_wrap: false
+			,language: "en"
+			,syntax: "php"	
+			,replace_tab_by_spaces : 4
+			,font_family: "Courier New"
+		});
+</script>
+</head>
+<body>
+<textarea id="example_1" style="height: 500px; width: 100%;" name="test_1">
+<?php	
+	$authors	= array();
+	$news		= array();
+	/* this is a long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long long comment for showing word-wrap feature */
+	$query	= "SELECT author, COUNT(id) as 'nb_news' FROM news_messages GROUP BY author";
+	$result	= mysql_query($query, $DBnews);
+	while( $line = mysql_fetch_assoc($result) ){
+		$authors[$line["author"]]	= $line["author"];
+		$news[$line["author"]]		= $line['nb_news'];
+	}
+	
+	$list= sprintf("('%s')", implode("', '", $authors));
+	
+	
+	$query="SELECT p.people_id, p.name, p.fname, p.status, team_name, t.leader_id=p.people_id as 'team_leader', w.name as 'wp_name', w.type
+			FROM people p, teams t, wppartis wp, wps w
+			WHERE p.people_id IN $list AND p.org_id=t.team_id AND wp.team_id=t.team_id AND wp.wp_id=w.wp_id 
+			GROUP BY p.people_id";
+	if(isset($_GET["order"]) && $_GET["order"]!="nb_news")
+		$query.=" ORDER BY ".$_GET["order"];
+		
+	$result=mysql_query($query, $DBkal);
+	while($line = mysql_fetch_assoc($result)){
+		printf("<tr><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td><td>%s</td></tr>", $line["name"], $line["fname"],
+			$news[$line["people_id"]], $line["status"], $line["team_name"], ($line["team_leader"]=="1")?"yes":"no", $line["type"], $line["wp_name"]);
+	
+	}
+	printf("</table>");
+?>
+		</textarea>
+
+
+</body></html>

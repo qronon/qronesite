@@ -1,4 +1,4 @@
-﻿body{
+body{
 	margin:0px;
 	font-family:"Arial";
 }
@@ -21,17 +21,31 @@ p{
 	background-color:#312525;
 }
 
+.yellowbtn{
+	scale9:url(yellow_button.png) 20px 145px;
+	width:200px;
+	padding:10px;
+}
+
+.alert{
+	margin:24px;
+	padding:6px;
+	background-color:#FFF2CA;
+	border: solid 1px #E4CD86;
+	width:400px;
+}
+
 .leftcolumn{
 	width:500px;
 }
 
-.rightcolumn{
+#rightcolumn{
 	width:200px;
+	padding:3px;
 	margin-left:15px;
 	float:right;
 	border:solid 0px gray;
 	border-left-width:1px;
-	include:url(sidebar.html);
 }
 
 .block{

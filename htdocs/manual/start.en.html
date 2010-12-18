@@ -1,0 +1,53 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<title>QrONE JavaScript</title>
+<meta name="include-in" content="../main/qrone-frame.html#content"/>
+<link href="../main/default.css" include /> 
+</head>
+<body>
+
+<div class="rightcolumn">
+
+</div>
+
+
+<h2>Tutorial</h2>
+
+<h3>1. Download "qrone-x.y.z.jar"</h3>
+
+<a href="http://github.com/qronon/qrone/downloads">Download</a> latest "qrone.jar" from github.<br/>
+<br/>
+If you have not installed Java 6, install it too.
+
+<h3>2. Start it.</h3>
+
+If you are using Windows, just double click "qrone-x.y.z.jar" to run it.<br/>
+You see following window, it's runninng. Simply close the window to stop server.<br/>
+<br/>
+<img src="qroneserver-snap.png" /><br/>
+<br/>
+Command-line execution is also available with options for production usage.<br>
+This is just good for testing.
+
+<h3>3. Put your file.</h3>
+
+QrONE server treat current directory as a document root by default.<br/>
+Create file "hello.js" to same directory as "qrone-x.y.z.jar", with just following contents.<br/>
+<br/>
+<div class="codebox">
+document.write(<span style="color:yellow">"Hello JavaScript World!"</span>);
+</div>
+
+<h3>4. Done.</h3>
+
+Simply access <a href="http://localhost:9601/test.js">http://localhost:9601/test.js</a> to show the result.<br/>
+<br/>
+<img src="hellojs-snap.png" /><br/>
+<br/>
+
+
+
+
+
+</body></html>

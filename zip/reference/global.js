@@ -1,0 +1,1 @@
+document.write(load_yaml("global.yaml"));

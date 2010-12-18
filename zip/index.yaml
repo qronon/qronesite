@@ -1,0 +1,37 @@
+﻿title: |
+  QrONE は、高速な Web サイトを実現する新しい Web 言語です。
+  でも、なぜ今新しい言語なのでしょうか？
+  
+  <center><span style="color:gray;">■</span></center>
+intro: |
+  <br><a href="http://www.amazon.co.jp/%E3%83%8F%E3%82%A4%E3%83%91%E3%83%95%E3%82%A9%E3%83%BC%E3%83%9E%E3%83%B3%E3%82%B9Web%E3%82%B5%E3%82%A4%E3%83%88-%E2%80%95%E9%AB%98%E9%80%9F%E3%82%B5%E3%82%A4%E3%83%88%E3%82%92%E5%AE%9F%E7%8F%BE%E3%81%99%E3%82%8B14%E3%81%AE%E3%83%AB%E3%83%BC%E3%83%AB-Steve-Souders/dp/487311361X">ハイパフォーマンス Web サイト</a>をご覧になられたでしょうか、Web サイトの表示にかかる時間の約８割はフロントエンドによるもの。QrONE はこのフロントエンドの高速化を行うことによって、 <span style="color:red;">" 普通じゃない早さ "</span> を実現しています。
+point: 
+  - Web サイトの高速な表示
+  - DOM を用いたスマートなテンプレート
+  - サーバーサイド JavaScript
+desc: |
+  コーディングもとてもシンプル。
+  JSON からデータを読み込み、テンプレートに挿入するならこんな感じ、
+code: |
+  <span style="color:orange">// load JSON file and insert it's value to id:#title</span>
+  <span style="color:lightblue">var</span> data = load_json(<span style="color:lightgreen">"file.json"</span>);
+  document.load(<span style="color:lightgreen">"template.html"</span>);
+  document.set(<span style="color:lightgreen">"div #title"</span>,data.title);
+  document.out();
+desc2: |
+  HTML にも JSON にも特殊なシカケは一切なく、&lt;div id="title"> ～ &lt;/div> に値をセットできています。またあらゆる Java クラスを直接 JavaScript から扱えるので、困ったときにも安心です。
+  
+  &nbsp;&nbsp;&nbsp;&nbsp;<a href=""><img src="img/led-icons/arrow_right.png" align="absmiddle"> まずは使ってみよう！</a>
+  
+  <span style="color:gray;"> - J.Tabuchi</span>
+desc3: |
+  。QrONE は Java からも利用でき、複雑なロジックは Java で書くことを推奨しますが、通常のウェブサイトであれば JavaScript だけで十分にコーディングできます。
+  高度な Web 圧縮には HTML JS CSS を精密に解析する必要があり、この為、QrONE は無数のオープンソースを利用しています。
+  
+  ハイパフォーマンスウェブサイトの実現にやることはたくさんあります。JavaScript や CSS の圧縮、CSS Sprite の作成と埋め込み、コメントやスペースの除去、キャッシュなど、すべてやるのは容易ではありません。
+  
+  QrONE は、サーバーからクライアントまで JavaScript で書くことを目的とし、数多くの Java オープンソースソフトウェアを利用して作られた Web サーバーです。必要なのはファイルたった１つ、ダブルクリックするだけで置かれたフォルダを公開する Web サーバーとして簡単に起動できます。
+  
+  php によく似た便利な関数群を持ち、MySQL、Memcached といった基本的なデータベースから、MongoDB のような最新の KVS に至るまでに簡単に接続できます。また、Java ライブラリがそのまま JavaScript から利用できるため、機能不足に悩まされることはないでしょう。
+  
+  JavaScript の言語特性は、JSON API や XML API といったウェブ技術に高い親和性を持っています。また、サーバー側で DOM や CSS を利用することで一切の特殊タグを廃した非常に強力なテンプレートエンジンを備えています。

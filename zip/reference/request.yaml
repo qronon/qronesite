@@ -1,0 +1,33 @@
+﻿class: |
+	request
+classdesc: |
+	Java Servlet の <a href="http://mergedoc.sourceforge.jp/tomcat-servletapi-5-ja/javax/servlet/http/HttpServletRequest.html">HttpServletRequest</a> オブジェクトです。
+	リクエストに関する情報を取得可能です。
+	
+	JavaScript から直接 Java オブジェクトを利用可能です。その際の詳細な動作については、Java Class の利用方法を参照してください。
+	
+methods:
+	- 
+	  name	: |
+	    request
+	  syntax: |
+	    javax.servlet.http.HttpServletRequest request
+	  desc	: |
+	    HttpServletRequest オブジェクトを返します。
+	  param:
+	    get:|
+	      HttpServletRequest オブジェクトを返します。
+	  history:
+	    -
+	      version: |
+	        0.0.3
+	      description: |
+	        request オブジェクトを実装しました
+	  example: 
+	    -
+	      ex: |
+	        UserAgent を表示します
+	      code: |
+	        document.write(request.getHeader("UserAgent"));
+	      output: |
+	        Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US) ...

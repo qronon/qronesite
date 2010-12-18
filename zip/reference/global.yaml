@@ -1,0 +1,9 @@
+A: aaa
+B:
+  B1: bbb1
+  B2:
+    - |
+      test<>
+      testtest
+    - test
+C: ccc

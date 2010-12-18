@@ -1,0 +1,232 @@
+﻿class: |
+	document
+classdesc: |
+	標準ブラウザ互換の document オブジェクトです。
+	通常は、 document オブジェクトは多くの関数やプロパティを持っていますが、エミュレートしているのはごくわずかです。多くはサーバー側で不要であるか、実装できない類のものか、DOM に関するものです。
+	
+	QrONE は DOM 解析を行いますが DOM に関する一般的なインターフェースは今のところプログラマに開放していません。これは一般的な DOM Level 1～3 API による操作はサーバー処理には重すぎる為です。
+	
+	その変わりに QrONE は非常に便利な document.load / document.set / document.out という一連の関数群を用意しています。これは jQuery によく似た CSS セレクタによる操作を行う方法で、非常に高速に動作するようよくオプティマイズされています。
+methods:
+	- 
+	  name	: |
+	    document.cookie
+	  syntax: |
+	   string document.cookie
+	  desc	: |
+	    ブラウザの動作をエミュレートするプロパティです。
+	    Cookie ヘッダで送られてきたデータをそのまま返します。
+	    
+	  param:
+	    get:|
+	      Cookie を返します
+	    set:|
+	      [read only]
+	  history:
+	    -
+	      version: |
+	        0.0.5
+	      description: |
+	        document.cookie を実装しました
+	  example: 
+	    -
+	      ex: |
+	        Cookie を表示します
+	      code: |
+	        document.write(document.cookie);
+	      output: |
+	        key=value:key2=value2
+	- 
+	  name	: |
+	    document.load
+	  syntax: |
+	    void document.load( string path )
+	  desc	: |
+	    指定された HTML をテンプレートとして読み込みます。
+	    この際、初めて読み込まれるテンプレートの場合には、DOM アクセスが可能になるように解析が行われます。解析が行われるのはキャッシュが消えていない限りサーバー全体で一度だけで、すでに読み込まれているテンプレートの場合には即座に解析済み DOM を関連づけます。
+	    
+	    この際、QrONE は JavaScript, CSS の圧縮や、画像の結合と CSS Sprite による参照などの多くの表示高速化のためのオプティマイズを事前に行います。
+	    
+	    document.load のデフォルト値は、js ファイルと同じ階層にある .html 拡張子のついた同名のファイルです。add.js が実行ファイルの場合、実行時にまず add.html の読み込みを試みます。
+	    
+	  param:
+	  	path: |
+	  	  読み込むテンプレートへのパスを指定します。
+	  	  ex. "../path/to/template.html"
+	  history:
+	    -
+	      version: |
+	        0.0.3
+	      description: |
+	        document.load を実装しました
+	  example:
+	    - 
+	      ex: |
+	        テンプレートを読み込み、そのまま出力します。
+	      code: |
+	        document.load("../path/to/template.html");
+	        document.out();
+	      output: |
+	        ... (圧縮された ../path/to/template.html)
+	- 
+	  name	: |
+	    document.set
+	  syntax: |
+	    void document.set( string selector, string value )
+	    void document.set( string selector, element target  )
+	    void document.set( string selector, func oneach( document doc, element e ) )
+	  desc	: |
+	    document.load にて読み込まれたテンプレートを DOM 操作します。
+	    このメソッドは通常の DOM 操作に比較して高速に動作し、さらにテンプレートに対して必要な操作のほとんどを行うことができます。
+	    
+	    このメソッドは、jQuery によく似ており、CSS セレクタで指定したた一つまたは複数のタグに対し操作を行います。
+	    
+	    文字列が指定された場合にはタグに代入され、関数が指定された場合にはそのタグの出力を関数で行うことができます。関数の中で for ループで内側のタグを繰り返し出力することで、特定のタグを繰り返し出力できます。
+	    
+	    CSS Selector で指定された一つまたは複数のタグに対し値の代入、あるいはタグの内側を繰り返し出力します。
+	  param:
+	  	selector: |
+	  	  対象のタグを指定するセレクタを指定します。
+	  	  ex. "div.title", "#item"
+	  	value: |
+	  	  代入する HTML 文字列を指定します。
+	  	target: |
+	  	  対象のタグの内側に読み込むタグを指定します。
+	  	oneach: |
+	  	  タグの出力時に呼び出される関数を指定します。
+	  	doc: |
+	  	  タグの内側への出力を内部情報として持った document オブジェクト与えられます。このオブジェクトはドキュメント全体の DOM を参照する為、set における selector もドキュメント全体から指定することができます。
+	  	e: |
+	  	  現在処理中のタグが与えられます。
+	  history:
+	    -
+	      version: |
+	        0.0.5
+	      description: |
+	        target による処理を追加しました。
+	    -
+	      version: |
+	        0.0.3
+	      description: |
+	        document.set を実装しました
+	  example: 
+	    -
+	      ex: |
+	        ホストを表示します
+	      code: |
+	        document.write(location.host);
+	      output: |
+	        www.qrone.org:8080
+	- 
+	  name	: |
+	    document.set
+	  syntax: |
+	    void document.set( object target )
+	    void document.set( string selector, object target  )
+	  desc	: |
+	    document.load にて読み込まれたテンプレートを DOM 操作します。
+	    このメソッドは JSON 形式のオブジェクトを渡すことで、JSON のキーを selector とみなし、配列の場合には繰り返し出力とみなし、繰り返し set を行います。
+	  	  
+	  	  document.set("#a","title");
+	  	  document.set("#b","description");
+	  	  document.set("#c",function(doc,e){
+	  	  	doc.set("#item","comment1");
+	  	  	doc.out(e);
+	  	  	doc.set("#item","comment2");
+	  	  	doc.out(e);
+	  	  	doc.set("#item","comment3");
+	  	  	doc.out(e);
+	  	  });
+	  	  
+	  	  と
+	  	  
+	  	  document.set({
+	  	  	"a":"title",
+	  	  	"b":"description",
+	  	  	"c":{item:[
+	  	  		"comment1",
+	  	  		"comment2",
+	  	  		"comment3"]
+	  	  	}});
+	  	  	
+	  	  は同じ処理を行います。
+	  param:
+	  	selector: |
+	  	  対象のタグを指定するセレクタを指定します。
+	  	  ex. "div.title", "#item"
+	  	target: |
+	  	  target として展開する JSON オブジェクトを渡します。
+	  history:
+	    -
+	      version: |
+	        0.0.5
+	      description: |
+	        target による処理を追加しました。
+	  example: 
+	    -
+	      ex: |
+	        YAML を読み込み中のデータを HTML に展開します。
+	      code: |
+	        document.set(load_yaml("setting.yaml"));
+	        document.out();
+	      output: |
+	        ...
+	- 
+	  name	: |
+	    document.write
+	  syntax: |
+	    void document.write( mixed data )
+	  desc	: |
+	    文字列またはオブジェクトを出力します。
+	    文字列あるいは XML の場合そのまま出力され、それ以外の場合には、JSON 形式で出力が行われます。
+	    
+	    ブラウザの動作をエミュレートする関数ですが、利便性の為、拡張されています。
+	  param:
+	  	data: |
+	  	  出力するデータを指定します。
+	  history:
+	    -
+	      version: |
+	        0.0.3
+	      description: |
+	        document.write を実装しました
+	  example: 
+	    -
+	      ex: |
+	        Hello World! を表示します
+	      code: |
+	        document.write("Hello World!");
+	      output: |
+	        Hello World!
+	- 
+	  name	: |
+	    document.writeln
+	  syntax: |
+	    void document.writeln( mixed data)
+	  desc	: |
+	    文字列またはオブジェクトを出力し、改行文字を出力します。
+	    文字列あるいは XML の場合そのまま出力され、それ以外の場合には、JSON 形式で出力が行われます。
+	    
+	    &lt;br&gt; タグではなく、改行文字コードが出力される為、HTML 中で利用した場合には実際には改行されない為、注意が必要です。
+	    
+	    ブラウザの動作をエミュレートする関数ですが、利便性の為、拡張されています。
+	  param:
+	  	data: |
+	  	  出力するデータを指定します。
+	  history:
+	    -
+	      version: |
+	        0.0.5
+	      description: |
+	        document.writeln を実装しました
+	  example: 
+	    -
+	      ex: |
+	        Hello World! を表示します
+	      code: |
+	        document.write("Hello World!");
+	        document.writeln("Hello World!");
+	        document.write("Hello World! again");
+	      output: |
+	        Hello World!Hello World!
+	        Hello World! again

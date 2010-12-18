@@ -1,0 +1,187 @@
+﻿class: |
+	window
+classdesc: |
+	標準ブラウザ互換の window オブジェクトです。
+	
+	window オブジェクトは特殊なオブジェクトでグローバルスコープを意味しています。つまり、window.require() は、修飾なしに require() と呼ぶことができます。これはブラウザと同じ動作です。
+	
+	ここで記載する以外の多くのトップレベル関数を各モジュールが window オブジェクトに割り当てていることになりますが、ここには window オブジェクトが他のモジュールに関係せずに持っている関数のみを記載しています。
+	
+	またクライアントのブラウザに関する多くの関数は、現在は、サーバー側ではエミュレートを行っていません。（将来的には、UserAgent から推定できるようになる予定です。）
+	
+	
+methods:
+	- 
+	  name	: |
+	    query
+	  syntax: |
+	   string window.query
+	  desc	: |
+	    クエリ文字列を、配列に展開したオブジェクトを返します。
+	  param:
+	    get:|
+	      クエリのキーと値の配列を返します。同一キーが複数指定されている場合には値が配列で与えられることに注意してください。
+	  history:
+	    -
+	      version: |
+	        0.0.3
+	      description: |
+	        window.query を実装しました
+	  example: 
+	    -
+	      ex: |
+	        クエリを JSON 形式で表示します
+	      code: |
+	        document.write(query);
+	      output: |
+	        {"key":"value","key2":["value2-1","value2-2"]}
+	- 
+	  name	: |
+	    require
+	  syntax: |
+	    void window.require( string path )
+	  desc	: |
+	    指定された JavaScript を実行します。
+	    
+	  param:
+	  	path: |
+	  	  実行する JavaScript へのパスを指定します。
+	  	  ex. "../lib/util.js"
+	  history:
+	    -
+	      version: |
+	        0.0.3
+	      description: |
+	        window.require を実装しました
+	  example:
+	    - 
+	      ex: |
+	        読み込み元の JavaScript ファイルを用意します
+	      code: |
+	        // hello.js
+	        document.writeln("Hello world!");
+	      output: |
+	        Hello world!
+	    - 
+	      ex: |
+	        JavaScript を２度読み込みます。
+	      code: |
+	        require("../lib/hello.js");
+	        require("../lib/hello.js");
+	      output: |
+	        Hello world!
+	   	    Hello world!
+	- 
+	  name	: |
+	    require_once
+	  syntax: |
+	    void window.require_once( string path )
+	  desc	: |
+	    指定された JavaScript を実行します。
+	    一度読み込まれたファイルである場合には無視します。
+	    
+	  param:
+	  	path: |
+	  	  実行する JavaScript へのパスを指定します。
+	  	  ex. "../lib/util.js"
+	  history:
+	    -
+	      version: |
+	        0.0.3
+	      description: |
+	        window.require を実装しました
+	  example:
+	    - 
+	      ex: |
+	        読み込み元の JavaScript ファイルを用意します
+	      code: |
+	        // util.js
+	        document.writeln("Hello world!");
+	        function helloagain(){
+	        	document.writeln("Hello world! again");
+	        }
+	      output: |
+	        Hello world!
+	    - 
+	      ex: |
+	         JavaScript を２度読み込みます。
+	      code: |
+	        require("../lib/hello.js");
+	        require("../lib/hello.js");
+	        helloagain();
+	      output: |
+	        Hello world!
+	   	    Hello world! again
+	- 
+	  name	: |
+	    load_html
+	  syntax: |
+	    document window.load_html( string path )
+	  desc	: |
+	    指定された HTML をテンプレートとして読み込みます。
+	    
+	    現在の出力と関連づけられていない為、ここで読み込んだテンプレートを出力するには、標準のドキュメントオブジェクトの document.set( "#target", doc.body ) などとして標準のドキュメントに set してやる必要があります。
+	    
+	  param:
+	  	path: |
+	  	  読み込むファイルへのパスを指定します。
+	  	  ex. "../path/to/template.html"
+	  	return: |
+	  	  新しい document オブジェクトを返します。
+	  history:
+	    -
+	      version: |
+	        0.0.5
+	      description: |
+	        window.load_html を実装しました
+	  example:
+	    - 
+	      ex: |
+	         読み込んだファイルを出力します。
+	      code: |
+	        var doc = load_html("part.html");
+	        doc.set( "#title", "Hello Title!" );
+	        
+	        document.set( "#target", doc.body );
+	        document.out();
+	      output: |
+	        // hello.txt
+	        Hello world file!!!
+	- 
+	  name	: |
+	    load_file
+	  syntax: |
+	    string window.load_file( string path )
+	  desc	: |
+	    指定されたファイルを読み込みます。
+	    
+	  param:
+	  	path: |
+	  	  読み込むファイルへのパスを指定します。
+	  	  ex. "../lib/util.txt"
+	  	return: |
+	  	  ファイルの読み込み結果を文字列で返します。
+	  history:
+	    -
+	      version: |
+	        0.0.3
+	      description: |
+	        window.load_file を実装しました
+	  example:
+	    - 
+	      ex: |
+	        読み込み元のファイルを用意します
+	      code: |
+	        // hello.txt
+	        Hello world file!
+	      output: |
+	        // hello.txt
+	        Hello world file!
+	    - 
+	      ex: |
+	         読み込んだファイルを出力します。
+	      code: |
+	        document.write(load_file("hello.txt"));
+	      output: |
+	        // hello.txt
+	        Hello world file!!!
